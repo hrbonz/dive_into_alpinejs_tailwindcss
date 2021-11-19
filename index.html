@@ -7,14 +7,12 @@
     <link rel="stylesheet" href="tailwind.min.css">
   </head>
   <body>
-  <section>
+      <section x-data="{ message: 'Hello world' }">
     <div class="container">
       <h1>
         Rapid prototyping
       </h1>
-      <p>
-        Hello world
-      </p>
+      <p x-text="message"></p>
     </div>
   </section>
   <script src="dayjs.min.js"></script>
