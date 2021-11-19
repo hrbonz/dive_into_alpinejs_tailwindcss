@@ -12,29 +12,27 @@
       x-data="rapidproto"
     >
       <div class="container mx-auto h-full flex justify-center items-center">
-        <div class="bg-white">
-          <div>
-            <p>
-              <span>PM2.5:</span>
-              <span x-text="fields.pm25">--</span>&nbsp;<span>µg/m<sup>3</sup></span>
-            </p>
-            <p>
-              <span>CO<sub>2</sub>:</span>
-              <span x-text="fields.co2">--</span>&nbsp;<span>ppm</span>
-            </p>
-            <p>
-              <span>Temperature:</span>
-              <span x-text="fields.temp">--</span>&nbsp;<span>&deg;C</span>
-            </p>
-            <p>
-              <span>Humidity:</span>
-              <span x-text="fields.hu">--</span>&nbsp;<span>&percnt;</span>
-            </p>
-            <p>
-              <span>Latest:</span>
-              <span x-text="ts">--</span>
-            </p>
-          </div>
+        <div class="bg-white rounded-lg shadow-lg px-8 py-4">
+          <p>
+            <span>PM2.5:</span>
+            <span x-text="fields.pm25">--</span>&nbsp;<span>µg/m<sup>3</sup></span>
+          </p>
+          <p>
+            <span>CO<sub>2</sub>:</span>
+            <span x-text="fields.co2">--</span>&nbsp;<span>ppm</span>
+          </p>
+          <p>
+            <span>Temperature:</span>
+            <span x-text="fields.temp">--</span>&nbsp;<span>&deg;C</span>
+          </p>
+          <p>
+            <span>Humidity:</span>
+            <span x-text="fields.hu">--</span>&nbsp;<span>&percnt;</span>
+          </p>
+          <p>
+            <span>Latest:</span>
+            <span x-text="ts">--</span>
+          </p>
         </div>
       </div>
     </section>
