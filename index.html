@@ -28,6 +28,10 @@
           message: "Hello world",
           ts: '--',
           init() {
+            this.fetchLatest();
+            setInterval(this.fetchLatest.bind(this), 10 * 1000);
+          },
+          fetchLatest() {
             api.getTagLatest(tagUUID)
               .then(function(data) {
                 const ts = dayjs(data['ts']);
