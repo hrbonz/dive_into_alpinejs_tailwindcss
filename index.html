@@ -9,10 +9,30 @@
   <body>
     <section x-data="rapidproto">
       <div class="container mx-auto">
-        <h1>
-          Rapid prototyping
-        </h1>
-        <p x-text="ts"></p>
+        <div>
+          <div>
+            <p>
+              <span>PM2.5:</span>
+              <span x-text="fields.pm25">--</span>&nbsp;<span>µg/m<sup>3</sup></span>
+            </p>
+            <p>
+              <span>CO<sub>2</sub>:</span>
+              <span x-text="fields.co2">--</span>&nbsp;<span>ppm</span>
+            </p>
+            <p>
+              <span>Temperature:</span>
+              <span x-text="fields.temp">--</span>&nbsp;<span>&deg;C</span>
+            </p>
+            <p>
+              <span>Humidity:</span>
+              <span x-text="fields.hu">--</span>&nbsp;<span>&percnt;</span>
+            </p>
+            <p>
+              <span>Latest:</span>
+              <span x-text="ts">--</span>
+            </p>
+          </div>
+        </div>
       </div>
     </section>
     <script src="dayjs.min.js"></script>
@@ -26,6 +46,7 @@
       document.addEventListener('alpine:init', () => {
         Alpine.data('rapidproto', () => ({
           message: "Hello world",
+          fields: {},
           ts: '--',
           init() {
             this.fetchLatest();
@@ -36,6 +57,13 @@
               .then(function(data) {
                 const ts = dayjs(data['ts']);
                 this.ts = ts.format('YYYY/MM/DD HH:mm');
+                const fields = data['fields'];
+                this.fields = {
+                  pm25: fields['pm25'].toFixed(1),
+                  co2: fields['co2'].toFixed(0),
+                  temp: fields['temperature'].toFixed(1),
+                  hu: fields['humidity'].toFixed(1),
+                };
               }.bind(this));
           },
         }));
