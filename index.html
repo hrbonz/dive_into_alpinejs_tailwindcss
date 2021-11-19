@@ -8,21 +8,31 @@
   </head>
   <body>
     <section x-data="rapidproto">
-      <div class="container">
+      <div class="container mx-auto">
         <h1>
           Rapid prototyping
         </h1>
-        <p x-text="message"></p>
+        <p x-text="ts"></p>
       </div>
     </section>
     <script src="dayjs.min.js"></script>
     <script src="alpine.min.js" defer></script>
+    <script src="gamsapi.js"></script>
+    <script src="secret.js"></script>
     <script>
+      let api = gamsAPI(apitoken);
+      let tagUUID = "f5301700-e373-4326-a271-e60b8b091f90";
+
       document.addEventListener('alpine:init', () => {
         Alpine.data('rapidproto', () => ({
           message: "Hello world",
+          ts: '--',
           init() {
-            console.log('Component initialized');
+            api.getTagLatest(tagUUID)
+              .then(function(data) {
+                const ts = dayjs(data['ts']);
+                this.ts = ts.format('YYYY/MM/DD HH:mm');
+              }.bind(this));
           },
         }));
       });
