@@ -21,6 +21,9 @@
       document.addEventListener('alpine:init', () => {
         Alpine.data('rapidproto', () => ({
           message: "Hello world",
+          init() {
+            console.log('Component initialized');
+          },
         }));
       });
     </script>
